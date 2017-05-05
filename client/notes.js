@@ -3,7 +3,7 @@ var React = require('react')
 function Notes(props) {
 
   const $notes = props.notes.map(function (note, index) {
-    const $note = React.createElement('li', {key: index}, note.text)
+    const $note = React.createElement('li', {key: index}, note)
     return $note
   })
 

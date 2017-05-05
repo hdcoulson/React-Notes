@@ -9,3 +9,4 @@ const render = function render() {
 }
 
 render()
+window.store = store
