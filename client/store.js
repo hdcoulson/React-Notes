@@ -19,6 +19,9 @@ function newNote(oldState = 'placeholder', action) {
   if (action.type === 'INPUT_CHANGED') {
     return action.text
   }
+  else if (action.type === 'NOTE_CREATED') {
+    return ''
+  }
   else {
     return oldState
   }

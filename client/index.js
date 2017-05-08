@@ -10,5 +10,6 @@ const render = function render() {
   ReactDOM.render(React.createElement(Form, state), document.querySelector('#form'))
 }
 
+store.subscribe(render)
 render()
 window.store = store

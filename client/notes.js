@@ -5,7 +5,6 @@ function Notes(props) {
     const $note = React.createElement('li', {key: index}, note)
     return $note
   })
-
   const $renderedList = React.createElement('ul', null, $notes)
   return $renderedList
 }
