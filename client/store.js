@@ -1,32 +1,34 @@
 var Redux = require('redux')
 
 const initialNotes = [
-  {
-    text: 'First Entry - This is my first note.'
-  },
-  {
-    text: 'Second entry - This is my second note.'
-  },
-  {
-    text: 'Third entry - This is my third note.'
-  }
+  'First Entry - This is my first note.',
+  'Second entry - This is my second note.',
+  'Third entry - This is my third note.'
 ]
 
-function reducer(oldState = initialNotes, action) {
-  if (action.type === 'NEW_NOTE') {
+function notesList(oldState = initialNotes, action) {
+  if (action.type === 'NOTE_CREATED') {
     return oldState.concat(action.text)
-  }
-  else if (action.type === 'DELETE_NOTE') {
-    return [
-        ...oldState.slice(0, action.position),
-        ...oldState.slice(action.position + 1)
-    ]
   }
   else {
     return oldState
   }
 }
 
-const store = Redux.createStore(reducer, initialNotes)
+function newNote(oldState = 'placeholder', action) {
+  if (action.type === 'INPUT_CHANGED') {
+    return action.text
+  }
+  else if (action.type === 'NOTE_CREATED') {
+    return ''
+  }
+  else {
+    return oldState
+  }
+}
+
+const reducer = Redux.combineReducers({ notesList, newNote })
+
+const store = Redux.createStore(reducer)
 
 module.exports = store
